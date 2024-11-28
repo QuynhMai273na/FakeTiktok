@@ -62,3 +62,60 @@
     transform: rotate(360deg);
   }
 }
+
+.share-popup {
+  position: absolute;
+  bottom: 50px;
+  right: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  z-index: 1000;
+  width: 310px;
+  display:flex;
+  justify-content: center;
+  padding: 20px;
+}
+.share-popup .share-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.share-popup .share-icon {
+  font-size: 50px;
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+.share-popup .facebook {
+  color: #1877f2;
+}
+
+.share-popup .instagram {
+  color: #e4405f;
+}
+
+.share-popup .threads {
+  color: #000;
+}
+
+.close-popup {
+  background-color: rgb(52, 138, 195);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 14px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+

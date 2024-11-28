@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus, faCircleCheck, faHeart, faCommentDots, faBookmark, faShare, faVolumeLow, faVolumeMute } from '@fortawesome/free-solid-svg-icons';
 import './FooterRight.css';
+import { faFacebook, faInstagram, faThreads } from '@fortawesome/free-brands-svg-icons';
 
 function FooterRight({ likes, comments, saves, shares, profilePic, videoRef }) {
   const [liked, setLiked]=useState(false);
@@ -15,6 +16,8 @@ function FooterRight({ likes, comments, saves, shares, profilePic, videoRef }) {
       setUserAddIcon(null);
     }, 3000);
   };
+
+  
 
   const parseLikesCount = (count) =>{
     if(typeof count === 'string'){
@@ -43,6 +46,13 @@ function FooterRight({ likes, comments, saves, shares, profilePic, videoRef }) {
       videoRef.current.muted = isMuted; // Thay đổi trạng thái âm thanh của video
       setMuted(isMuted); // Cập nhật trạng thái `muted`
     }
+  };
+  const [isSharePopupVisible, setSharePopupVisible] = useState(false);
+  const handleShareClick = () => {
+    setSharePopupVisible(true);
+  };
+  const handleClosePopup = () => {
+    setSharePopupVisible(false);
   };
 
   return (
@@ -88,7 +98,7 @@ function FooterRight({ likes, comments, saves, shares, profilePic, videoRef }) {
 
       <div className='sidebar-icon'>
         {/* the share icon */}
-        <FontAwesomeIcon icon = {faShare} style={{width: '35px', height:'35px',color: 'white'}} />
+        <FontAwesomeIcon icon = {faShare} style={{width: '35px', height:'35px',color: 'white'}} onClick={handleShareClick} />
 
         {/* display the number of shares */}
         <p>{shares}</p>
@@ -108,6 +118,18 @@ function FooterRight({ likes, comments, saves, shares, profilePic, videoRef }) {
         <img src="https://static.thenounproject.com/png/934821-200.png" alt="Record icon" />
       </div>
       
+      {isSharePopupVisible && (
+        <div className="share-popup">
+          <button className="close-popup" onClick={handleClosePopup}>
+            X
+          </button>
+          <div className="share-icons">
+            <FontAwesomeIcon icon={faFacebook} className="share-icon facebook" />
+            <FontAwesomeIcon icon={faInstagram} className="share-icon instagram" />
+            <FontAwesomeIcon icon={faThreads} className="share-icon threads" />
+          </div>
+        </div>
+      )}
 
     </div>
   );

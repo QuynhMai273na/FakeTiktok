@@ -66,8 +66,12 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0); // To track the current video index
   const startY = useRef(null); // To track initial Y position of mouse
 
+  const [filteredVideos, setFilteredVideos] = useState([]);
+
   useEffect(() => {
     setVideos(videoUrls);
+    setFilteredVideos(videoUrls); // Initialize filteredVideos with all videos
+
   }, []);
 
   useEffect(() => {
@@ -155,6 +159,18 @@ videoRefs.current.forEach((videoRef) => {
     }
   }, [currentIndex]);
 
+  const handleSearch = (query) => {
+    if (query.startsWith("#")) {
+      const filtered = videos.filter((video) =>
+        video.description.includes(query)
+      );
+      setFilteredVideos(filtered);
+      setCurrentIndex(0); // Reset to the first video in the filtered list
+    } else {
+      alert("Please start your search with a hashtag (#).");
+    }
+  };
+
   return (
     <div
       className="app"
@@ -162,8 +178,8 @@ videoRefs.current.forEach((videoRef) => {
       onMouseUp={handleMouseUp}
     >
       <div className="container">
-        <TopNavbar className="top-navbar" />
-        {videos.map((video, index) => (
+        <TopNavbar className="top-navbar" onSearch={handleSearch}/>
+        {filteredVideos.map((video, index) => (
           <VideoCard
             key={index}
             username={video.username}
