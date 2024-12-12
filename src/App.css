@@ -125,3 +125,81 @@ html {
   padding: 5px;
   border-radius: 50%;
 }
+
+/* Container cho phần thông tin video */
+.video-info {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff; /* Đổi màu nền thành trắng */
+  color: black; /* Đổi màu chữ thành đen */
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 300px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+}
+
+/* Tiêu đề */
+.video-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Phần mô tả */
+.video-info p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Style cho các thông tin khác như likes, comments */
+.video-info p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Màu sắc cho các số liệu như likes, comments */
+.video-info p span {
+  font-weight: bold;
+}
+
+/* Đảm bảo phần thông tin video không che mất nội dung video */
+.video-info::-webkit-scrollbar {
+  width: 5px;
+}
+
+.video-info::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.video-info::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Nút đóng (dấu X) */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: #000;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 1010;
+}
+
+/* Nút đóng khi hover */
+.close-btn:hover {
+  color: red;
+}
